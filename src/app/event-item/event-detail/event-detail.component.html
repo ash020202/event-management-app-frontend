@@ -1,0 +1,39 @@
+@defer (on timer(1000)) { @if (isEventReceived) {
+<div class="container">
+  <button class="back" routerLink=".."></button>
+  <div class="img">
+    <img src="{{ event.imageUrl }}" alt="" />
+  </div>
+
+  <div class="event-info">
+    <p>{{ event.title }}</p>
+    <p>{{ event.date }}</p>
+    <p>{{ event.time }}</p>
+    <p>{{ event.description }}</p>
+    <p>{{ event.location }}</p>
+  </div>
+  <div class="btn-grp">
+    <button routerLink="/eventdetail/{{ eventId }}/edit">Edit</button>
+    <button routerLink="/" (click)="delEvent()">Delete</button>
+  </div>
+</div>
+} }@placeholder {
+<div class="skeleton-container">
+  <button class="back skeleton"></button>
+  <div class="img skeleton"></div>
+  <div class="event-info">
+    <p class="skeleton"></p>
+    <p class="skeleton"></p>
+    <p class="skeleton"></p>
+    <p class="skeleton"></p>
+    <p class="skeleton"></p>
+  </div>
+  <div class="btn-grp">
+    <button class="skeleton"></button>
+    <button class="skeleton"></button>
+  </div>
+</div>
+
+}
+
+<router-outlet></router-outlet>

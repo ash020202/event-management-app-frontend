@@ -1,0 +1,106 @@
+<div class="modal">
+  <form class="card" [formGroup]="eventForm">
+    <div class="remove" routerLink="/">X</div>
+    <div class="card-grp">
+      <label for="title">Event Title</label>
+      <input type="text" name="title" formControlName="title" />
+      <div
+        class="validation"
+        *ngIf="
+          eventForm.controls['title'].invalid &&
+          (isFormSubmitted ||
+            eventForm.controls['title'].dirty ||
+            eventForm.controls['title'].touched)
+        "
+      >
+        <span *ngIf="eventForm.controls['title'].errors?.['required']"
+          >Event Title is required</span
+        >
+      </div>
+    </div>
+    <div class="card-grp">
+      <label for="imageUrl">Provide Image Url From Google (Link)</label>
+      <input
+        type="text"
+        name="imageUrl"
+        placeholder="Ex:http://pen-img.jpg"
+        formControlName="imageUrl"
+      />
+    </div>
+    <div class="card-grp">
+      <label for="description">Event Description</label>
+      <input type="textarea" name="description" formControlName="description" />
+      <div
+        class="validation"
+        *ngIf="
+          eventForm.controls['description'].invalid &&
+          (isFormSubmitted ||
+            eventForm.controls['description'].dirty ||
+            eventForm.controls['description'].touched)
+        "
+      >
+        <span *ngIf="eventForm.controls['description'].errors?.['required']"
+          >Event Description is required</span
+        >
+      </div>
+    </div>
+    <div class="date-grp">
+      <div class="card-grp">
+        <label for="date">Event Date</label>
+        <input type="date" name="date" formControlName="date" />
+        <div
+          class="validation"
+          *ngIf="
+            eventForm.controls['date'].invalid &&
+            (isFormSubmitted ||
+              eventForm.controls['date'].dirty ||
+              eventForm.controls['date'].touched)
+          "
+        >
+          <span *ngIf="eventForm.controls['date'].errors?.['required']"
+            >Event Date is required</span
+          >
+        </div>
+      </div>
+      <div class="card-grp">
+        <label for="time">Event Time</label>
+        <input type="time" name="time" formControlName="time" />
+        <div
+          class="validation"
+          *ngIf="
+            eventForm.controls['time'].invalid &&
+            (isFormSubmitted ||
+              eventForm.controls['time'].dirty ||
+              eventForm.controls['time'].touched)
+          "
+        >
+          <span *ngIf="eventForm.controls['time'].errors?.['required']"
+            >Event Time is required</span
+          >
+        </div>
+      </div>
+    </div>
+    <div class="card-grp">
+      <label for="location">Event Location</label>
+      <input type="text" name="location" formControlName="location" />
+      <div
+        class="validation"
+        *ngIf="
+          eventForm.controls['location'].invalid &&
+          (isFormSubmitted ||
+            eventForm.controls['location'].dirty ||
+            eventForm.controls['location'].touched)
+        "
+      >
+        <span *ngIf="eventForm.controls['location'].errors?.['required']"
+          >Event Location is required</span
+        >
+      </div>
+    </div>
+
+    <div class="btn-grp">
+      <button routerLink="..">Cancel</button>
+      <button (click)="createEvent()">Create</button>
+    </div>
+  </form>
+</div>

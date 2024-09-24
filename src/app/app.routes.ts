@@ -1,13 +1,43 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
+import { CreateEventComponent } from './home/create-event/create-event.component';
+import { AllEventComponent } from './all-event/all-event.component';
+import { EventDetailComponent } from './event-item/event-detail/event-detail.component';
+import { EditComponent } from './edit/edit.component';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: '**', redirectTo: 'home' }, // wildcard route for handling invalid URLs
+  {
+    path: '',
+    component: HomeComponent,
+    children: [
+      {
+        path: 'create',
+        component: CreateEventComponent,
+        title: 'Create Event',
+      },
+    ],
+    title: 'home',
+  },
+  {
+    path: 'allevent',
+    component: AllEventComponent,
+    title: 'All Events',
+  },
+  {
+    path: 'eventdetail/:id',
+    component: EventDetailComponent,
+
+    title: 'Event Detail',
+  },
+
+  { path: 'eventdetail/:id/edit', component: EditComponent },
+  { path: '', redirectTo: '', pathMatch: 'full' },
+  {
+    path: '**',
+    redirectTo: '',
+    component: HomeComponent,
+  },
 ];
 
 @NgModule({

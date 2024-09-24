@@ -1,0 +1,11 @@
+<div class="event-container">
+  <div class="event-header">Recently added events</div>
+  <app-search-event (searchInput)="setSearchTxt($event)"></app-search-event>
+  <div class="event-grp">
+    @for (item of eventinfoList; track $index) { @defer (on timer(1000)) {
+    <app-event-item [eventInfo]="item" *ngIf="searchText=='' || item.title.toLowerCase().includes(searchText)"></app-event-item>
+    }@placeholder {
+    <div>Loading...</div>
+    } }
+  </div>
+</div>

@@ -1,1 +1,54 @@
-<p>home works!</p>
+<div class="container">
+  <div class="head-grp">
+    <header>
+      <h3>Event Hub</h3>
+      <!-- <a routerLink="/create-event">Create Event</a> -->
+      <button routerLink="/create">Create Event</button>
+    </header>
+    <div class="body-grp">
+      <p>Connect With amazing people or <span>find a new passion</span></p>
+      <span>
+        <p class="sub" [ngStyle]="{ color: 'black' }">
+          We are here to help you
+        </p>
+        <button routerLink="/create">Click To Create Your First Event</button>
+      </span>
+    </div>
+  </div>
+
+  <div class="event-container">
+    <div class="event-header">Recently added events</div>
+    <div class="event-grp">
+      @for (item of eventinfoList.slice(0, arrayLength); track $index) { @defer
+      (on timer(1000)) {
+      <app-event-item [eventInfo]="item"></app-event-item>
+      }@placeholder {
+      <div class="event-item skeleton">
+        <div class="event-img"></div>
+        <div class="event-info-grp">
+          <div class="event-info">
+            <p class="skeleton"></p>
+            <div class="label-grp">
+              <p class="skeleton"></p>
+              <p class="skeleton"></p>
+            </div>
+            <p class="skeleton"></p>
+            <p class="skeleton"></p>
+          </div>
+          <div class="event-btn">
+            <button class="skeleton"></button>
+          </div>
+        </div>
+      </div>
+
+      } } @empty {
+      <p class="no-event">No Orders Found</p>
+      }
+      <div class="show-more">
+        <button *ngIf="showMoreBtn" routerLink="/allevent">Show more</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,122 @@
+<div class="modal">
+  <form class="card" [formGroup]="eventForm">
+    <!-- <div class="remove" routerLink="..">X</div> -->
+    <div class="card-grp">
+      <label for="title">Title</label>
+      <input type="text" name="title" formControlName="title" />
+      <div
+        class="validation"
+        *ngIf="
+          eventForm.controls['title'].invalid &&
+          (isFormSubmitted ||
+            eventForm.controls['title'].dirty ||
+            eventForm.controls['title'].touched)
+        "
+      >
+        <span *ngIf="eventForm.controls['title'].errors?.['required']"
+          >Title is required</span
+        >
+        <span *ngIf="eventForm.controls['title'].errors?.['minlength']"
+          >Title must be at least 10 characters long</span
+        >
+      </div>
+    </div>
+    <div class="card-grp">
+      <label for="imageUrl">Image Url</label>
+      <input type="text" name="imageUrl" formControlName="imageUrl" />
+      <div
+        class="validation"
+        *ngIf="
+          eventForm.controls['imageUrl'].invalid &&
+          (isFormSubmitted ||
+            eventForm.controls['imageUrl'].dirty ||
+            eventForm.controls['imageUrl'].touched)
+        "
+      >
+        <span *ngIf="eventForm.controls['imageUrl'].errors?.['required']"
+          >Image is required</span
+        >
+      </div>
+    </div>
+    <div class="card-grp">
+      <label for="description">Description</label>
+      <input type="textarea" name="description" formControlName="description" />
+      <div
+        class="validation"
+        *ngIf="
+          eventForm.controls['description'].invalid &&
+          (isFormSubmitted ||
+            eventForm.controls['description'].dirty ||
+            eventForm.controls['description'].touched)
+        "
+      >
+        <span *ngIf="eventForm.controls['description'].errors?.['required']"
+          >Description is required</span
+        >
+        <!-- <span *ngIf="eventForm.controls['description'].errors?.['minlength']"
+          >Description should be minimum of 50 characters long</span
+        > -->
+      </div>
+    </div>
+    <div class="date-grp">
+      <div class="card-grp">
+        <label for="date">Date</label>
+        <input type="date" name="date" formControlName="date" />
+        <div
+          class="validation"
+          *ngIf="
+            eventForm.controls['date'].invalid &&
+            (isFormSubmitted ||
+              eventForm.controls['date'].dirty ||
+              eventForm.controls['date'].touched)
+          "
+        >
+          <span *ngIf="eventForm.controls['date'].errors?.['required']"
+            >Date is required</span
+          >
+        </div>
+      </div>
+      <div class="card-grp">
+        <label for="time">time</label>
+        <input type="time" name="time" formControlName="time" />
+        <div
+          class="validation"
+          *ngIf="
+            eventForm.controls['time'].invalid &&
+            (isFormSubmitted ||
+              eventForm.controls['time'].dirty ||
+              eventForm.controls['time'].touched)
+          "
+        >
+          <span *ngIf="eventForm.controls['time'].errors?.['required']"
+            >time is required</span
+          >
+        </div>
+      </div>
+    </div>
+    <div class="card-grp">
+      <label for="location">Location</label>
+      <input type="text" name="location" formControlName="location" />
+      <div
+        class="validation"
+        *ngIf="
+          eventForm.controls['location'].invalid &&
+          (isFormSubmitted ||
+            eventForm.controls['location'].dirty ||
+            eventForm.controls['location'].touched)
+        "
+      >
+        <span *ngIf="eventForm.controls['location'].errors?.['required']"
+          >Location is required</span
+        >
+        <span *ngIf="eventForm.controls['location'].errors?.['minlength']"
+          >Please Provide Valid Location</span
+        >
+      </div>
+    </div>
+    <div class="btn-grp">
+      <button routerLink="..">Cancel</button>
+      <button (click)="updateEvent()">Update</button>
+    </div>
+  </form>
+</div>

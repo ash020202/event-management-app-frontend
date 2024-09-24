@@ -1,0 +1,24 @@
+<div class="event-item">
+  <div class="event-img">
+    <img src="{{ eventInfo.imageUrl }}" alt="" />
+  </div>
+  <div class="event-info-grp">
+    <div class="event-info">
+      <p [ngStyle]="{ 'font-weight': 'bold' }">{{ eventInfo.title }}</p>
+      <div class="label-grp">
+        <p>{{ eventInfo.date }}</p>
+        <p>{{ eventInfo.time }}</p>
+      </div>
+      <p>{{ "Location : " + eventInfo.location }}</p>
+      <p class="description">{{ "Description : " + eventInfo.description }}</p>
+    </div>
+    <div class="event-btn">
+      <button
+        routerLink="/eventdetail/{{ eventInfo.id }}"
+        (click)="this.eventService.individualEvent(eventInfo.id)"
+      >
+        View Details
+      </button>
+    </div>
+  </div>
+</div>
